@@ -1,21 +1,26 @@
 # RecallCam
 
-RecallCam is a visual memory assistant that uses a webcam to recognize objects, remember where they were last seen, and help answer questions about them.
+RecallCam is a visual memory assistant that uses a webcam to recognize objects, remember where they were last seen, and answer questions about them.
 
-The idea behind RecallCam is simple: computers can already recognize objects, but what if they could remember them too?
+The idea is to go beyond object detection and build a system that can remember what it sees over time.
 
-## Features
+## What It Does
 
-- **Object Detection:** Detects everyday objects using YOLO.
-- **Visual Memory:** Stores information about where and when objects were last seen.
-- **Object Re-identification:** Uses visual features to help recognize the same object after it moves.
-- **Hand Tracking:** Uses MediaPipe to detect hands and record holding events.
-- **Voice Interaction:** Allows users to interact with the system through voice.
-- **Memory Queries:** Answers questions such as "Where did I leave my phone?" and "What was I holding 10 seconds ago?"
-- **Local Database:** Uses SQLite to store object observations and memory events.
-- **Efficient Processing:** Answers supported questions directly from local memory, reducing unnecessary cloud AI usage.
+- Detects everyday objects using computer vision.
+- Remembers where and when objects were last seen.
+- Uses visual features to recognize objects after they move.
+- Tracks hand interactions and records holding events.
+- Supports voice interaction and spoken responses.
+- Answers questions such as "Where did I leave my phone?" and "What was I holding 10 seconds ago?"
+- Stores observations locally using SQLite.
 
-## Tech Stack
+## How It Works
+
+RecallCam processes webcam frames, detects objects, and matches them with previously observed objects using visual features. It stores observations and timestamps in a local database.
+
+When a user asks a question, the system searches its stored memory to find relevant information and provide an answer.
+
+## Built With
 
 - Python
 - YOLO
@@ -25,83 +30,40 @@ The idea behind RecallCam is simple: computers can already recognize objects, bu
 - Speech Recognition
 - Text-to-Speech
 
-## How It Works
+## Running the Project
 
-1. The webcam captures frames from the surroundings.
-2. YOLO detects objects in the frames.
-3. Visual features help match detected objects with previously stored objects.
-4. RecallCam saves observations, timestamps, and location information in a local database.
-5. MediaPipe helps track hand interactions and record holding events.
-6. When a question is asked, the system searches its stored memory to provide an answer.
-
-## Getting Started
-
-### Requirements
-
-- Python
-- A webcam
-- A microphone for voice interaction
-- Required model files and Python dependencies
-
-### Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/SauravRijal7/RecallCam.git
-cd RecallCam
-```
-
-Create and activate a virtual environment:
-
-```bash
-python -m venv .venv
-```
-
-On Windows PowerShell:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Install the dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Make sure the required YOLO weights and MediaPipe model files are available in the locations specified by the project configuration.
-
-### Run the Application
+Run the main application from the project directory:
 
 ```bash
 python main.py
 ```
 
+The required model files and Python packages must be available for the application to work.
+
 ## Challenges
 
-One of the main challenges was recognizing the same physical object across different frames and positions. Changing lighting, camera angles, false detections, and limited hardware resources also made real-time processing difficult.
+Recognizing the same object across different positions, handling changing lighting conditions, reducing false detections, and maintaining real-time performance were some of the main challenges.
 
-Another challenge was combining object detection, hand tracking, persistent storage, and voice interaction into one system while keeping it responsive.
+Combining object detection, hand tracking, persistent memory, and voice interaction into one system also required careful integration.
 
-## Future Plans
+## What's Next
 
-- Improve object re-identification accuracy.
+- Improve object recognition and re-identification.
 - Make long-term memory more reliable.
 - Improve natural-language question answering.
-- Optimize performance on low-resource computers.
-- Explore support for multiple cameras.
+- Optimize performance on lower-powered computers.
+- Explore multi-camera support.
 
 ## Project Status
 
-RecallCam is an experimental prototype. Detection and memory results may vary depending on lighting, occlusion, camera position, and object visibility.
+RecallCam is an experimental prototype, and its accuracy depends on factors such as lighting, visibility, and camera position.
 
 ## Author
 
 **Saurav Rijal**
 
-GitHub: [SauravRijal7](https://github.com/SauravRijal7)
+[GitHub](https://github.com/SauravRijal7)
 
 ---
 
-RecallCam explores how computer vision can move beyond recognizing objects to remembering them over time.
+RecallCam explores a simple idea: computers should not only be able to see the world, but also remember it.
